@@ -10,6 +10,12 @@ def bookends(li: list):
     :return:
     """
 
+    firstchar = li.pop(0)
+    lastchar = li.pop(-1)
+
+    outputli = [firstchar, lastchar]
+    return outputli
+
 
 
 def inOrder(li : list):
@@ -18,6 +24,13 @@ def inOrder(li : list):
     :param list:
     :return:
     """
+    currentcount = 1
+
+    if li[currentcount] == currentcount:
+        currentcount = currentcount + 1
+    else:
+        print("Out of order! BAAGH!")
+    return currentcount
 
 
 
