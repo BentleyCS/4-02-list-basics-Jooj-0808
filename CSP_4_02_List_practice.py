@@ -24,13 +24,15 @@ def inOrder(li : list):
     :param list:
     :return:
     """
-    currentcount = 1
+    lastnum = 0
 
-    if li[currentcount] == currentcount:
-        currentcount = currentcount + 1
-    else:
-        print("Out of order! BAAGH!")
-    return currentcount
+    for item in li:
+        if item > lastnum:
+            lastnum = item
+            continue
+        else:
+            return False
+    return True
 
 
 
@@ -51,6 +53,15 @@ def find(li: list, target : int):
     :param target:
     :return:
     """
+    index = 0
+
+    for item in li:
+        if item == target:
+            return index
+        else:
+            index +=1
+            continue
+    return -1
 
 
 def removeLowest(li):
@@ -61,6 +72,9 @@ def removeLowest(li):
     :param list:
     :return:
     """
+    min_value = min(li)
+    li.remove(min_value)
+
 
 
 def keepOrder(li: list, value):
@@ -72,6 +86,11 @@ def keepOrder(li: list, value):
     :param value:
     :return:
     """
+    for i, item in enumerate(li):
+        if value <= item:
+            li.insert(i, value)
+            return
+    li.append(value)
 
 
 def merge(l1:list, l2:list):
@@ -83,4 +102,28 @@ def merge(l1:list, l2:list):
     :param l2:
     :return:
     """
-    
+    merged_list = []
+
+    i = 0
+    j = 0
+
+    len1 = len(l1)
+    len2 = len(l2)
+
+    while i < len1 and j < len2:
+        if l1[i] < l2[j]:
+            merged_list.append(l1[i])
+            i += 1
+        else:
+            merged_list.append(l2[j])
+            j += 1
+
+    while i < len1:
+        merged_list.append(l1[i])
+        i += 1
+
+    while j < len2:
+        merged_list.append(l2[j])
+        j += 1
+
+    return merged_list
